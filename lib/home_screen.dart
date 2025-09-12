@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "${featuredCars[index].brand} | ${featuredCars[index].price} \$",
+                                              "${featuredCars[index].price} \$",
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
@@ -269,22 +269,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                     horizontal: 12,
+                                                    vertical: 6,
                                                   ),
                                               decoration: BoxDecoration(
-                                                color: AppColors.secondary,
+                                                color: AppColors.secondary
+                                                    .withValues(alpha: 0.1),
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                    BorderRadius.circular(20),
                                               ),
-                                              // child: Center(
-                                              //   child: Text(
-                                              //     "Book Now",
-                                              //     style: TextStyle(
-                                              //       fontSize: 14,
-                                              //       fontWeight: FontWeight.bold,
-                                              //       color: Colors.white,
-                                              //     ),
-                                              //   ),
-                                              // ),
+                                              child: Center(
+                                                child: Text(
+                                                  "Book Now",
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: AppColors.secondary,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
