@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
   int _selectedCategory = 0;
 
   final categories = const ['All', 'Tesla', 'BMW', 'Mercedes', 'Audi'];
