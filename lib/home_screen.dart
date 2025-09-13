@@ -1,4 +1,5 @@
 import 'package:car_rental_app/car_model.dart';
+import 'package:car_rental_app/car_detail_screen.dart';
 import 'package:car_rental_app/colors.dart';
 import 'package:car_rental_app/data.dart';
 import 'package:flutter/material.dart';
@@ -181,119 +182,132 @@ class _HomeScreenState extends State<HomeScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: featuredCars.length,
-                          itemBuilder: (context, index) => Container(
-                            margin: const EdgeInsets.only(bottom: 15),
-                            decoration: BoxDecoration(
-                              color: AppColors.cardBg,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.05),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 5),
+                          itemBuilder: (context, index) => InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      CarDetailScreen(car: featuredCars[index]),
                                 ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 80,
-                                    width: 120,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.primary.withValues(
-                                        alpha: 0.1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        featuredCars[index].image,
-                                        height: 60,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
+                              );
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(bottom: 15),
+                              decoration: BoxDecoration(
+                                color: AppColors.cardBg,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: 0.05),
+                                    blurRadius: 10,
+                                    offset: const Offset(0, 5),
                                   ),
+                                ],
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primary.withValues(
+                                          alpha: 0.1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Center(
+                                        child: Image.asset(
+                                          featuredCars[index].image,
+                                          height: 60,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
 
-                                  const SizedBox(width: 15),
+                                    const SizedBox(width: 15),
 
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          featuredCars[index].name,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.textDark,
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            featuredCars[index].name,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.textDark,
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(height: 5),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.star,
-                                              color: Colors.amber,
-                                              size: 16,
-                                            ),
-                                            const SizedBox(width: 5),
-                                            Text(
-                                              "${featuredCars[index].rating}",
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: AppColors.textLight,
+                                          const SizedBox(height: 5),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                                size: 16,
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 5),
+                                              const SizedBox(width: 5),
+                                              Text(
+                                                "${featuredCars[index].rating}",
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: AppColors.textLight,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 5),
 
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "${featuredCars[index].price} \$",
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: AppColors.secondary,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "${featuredCars[index].price} \$",
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: AppColors.secondary,
+                                                ),
                                               ),
-                                            ),
 
-                                            Container(
-                                              height: 30,
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 12,
-                                                    vertical: 6,
-                                                  ),
-                                              decoration: BoxDecoration(
-                                                color: AppColors.secondary
-                                                    .withValues(alpha: 0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  "Book Now",
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: AppColors.secondary,
+                                              Container(
+                                                height: 30,
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 6,
+                                                    ),
+                                                decoration: BoxDecoration(
+                                                  color: AppColors.secondary
+                                                      .withValues(alpha: 0.1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    "Book Now",
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color:
+                                                          AppColors.secondary,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -313,12 +327,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildCarCard(Car car) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => CarDetailsScreen(car: car),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CarDetailScreen(car: car)),
+        );
       },
       child: Container(
         width: 220,
