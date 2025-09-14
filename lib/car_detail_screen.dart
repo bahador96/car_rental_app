@@ -216,6 +216,116 @@ class CarDetailScreen extends StatelessWidget {
                               ],
                             ),
                           ),
+
+                          SizedBox(height: 30),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Specifications',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.textDark,
+                                ),
+                              ),
+                              SizedBox(height: 15),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: _buildSpecItem(
+                                      'Power',
+                                      "350 hp",
+                                      Icons.bolt,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: _buildSpecItem(
+                                      "0-60 mph",
+                                      "4.5",
+                                      Icons.timer,
+                                    ),
+                                  ),
+
+                                  Expanded(
+                                    child: _buildSpecItem(
+                                      "Top speed",
+                                      "300 km/h",
+                                      Icons.speed,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(height: 30),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Features',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.textDark,
+                                ),
+                              ),
+                              SizedBox(height: 15),
+
+                              Wrap(
+                                spacing: 10,
+                                runSpacing: 10,
+                                children: [
+                                  _buildFeatureChip("Bluetooth"),
+                                  _buildFeatureChip("Apple CarPlay"),
+                                  _buildFeatureChip("Android Auto"),
+                                  _buildFeatureChip("360 Camera"),
+                                  _buildFeatureChip("Parking sensors"),
+                                  _buildFeatureChip("Navigation"),
+                                ],
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(height: 30),
+
+                          Container(
+                            padding: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: AppColors.cardBg,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.05),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Description",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.textDark,
+                                  ),
+                                ),
+                                SizedBox(height: 15),
+                                Text(
+                                  "Experience luxury and performace with the ${car.name}. This stunning vechile comies cutting-edge  technology with elegant design to deliver an unforgettable driving experience ",
+                                  style: TextStyle(
+                                    height: 1.5,
+                                    color: AppColors.textLight,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -223,6 +333,29 @@ class CarDetailScreen extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.cardBg,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.05),
+                    blurRadius: 10,
+                    offset: const Offset(0, -5),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -249,6 +382,66 @@ class CarDetailScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSpecItem(String label, String value, IconData icon) {
+    return Container(
+      padding: EdgeInsets.all(15),
+      margin: EdgeInsets.symmetric(horizontal: 5),
+
+      decoration: BoxDecoration(
+        color: AppColors.cardBg,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+
+      child: Column(
+        children: [
+          Icon(icon, size: 24, color: AppColors.secondary),
+          SizedBox(height: 5),
+          Text(
+            value,
+            style: TextStyle(
+              color: AppColors.textDark,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            label,
+            style: TextStyle(color: AppColors.textLight, fontSize: 12),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFeatureChip(String label) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColors.secondary.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppColors.secondary.withValues(alpha: 0.3),
+          width: 1,
+        ),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          color: AppColors.secondary,
+          // fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
