@@ -127,13 +127,126 @@ class CarDetailScreen extends StatelessWidget {
                       padding: EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [],
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(top: 25),
+                            decoration: BoxDecoration(
+                              color: AppColors.cardBg,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.05),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          car.brand,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: AppColors.textLight,
+                                          ),
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          car.name,
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.textDark,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          "\$${car.price}",
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.secondary,
+                                          ),
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "per day",
+                                          style: TextStyle(
+                                            color: AppColors.textLight,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20),
+
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    _buildInfochip(Icons.speed, '300 km/h'),
+                                    _buildInfochip(
+                                      Icons.account_tree_outlined,
+                                      'Automatic',
+                                    ),
+                                    _buildInfochip(
+                                      Icons.local_gas_station,
+                                      '50L',
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfochip(IconData icon, String label) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      decoration: BoxDecoration(
+        color: AppColors.primary.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, size: 18, color: AppColors.secondary),
+          SizedBox(width: 8),
+          Text(
+            label,
+            style: TextStyle(
+              color: AppColors.textDark,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
