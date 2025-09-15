@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final int _selectedIndex = 0;
+  int _selectedIndex = 0;
   int _selectedCategory = 0;
 
   final categories = const ['All', 'Tesla', 'BMW', 'Mercedes', 'Audi'];
@@ -321,6 +321,68 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: BottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            backgroundColor: Colors.transparent,
+
+            selectedItemColor: AppColors.secondary,
+
+            unselectedItemColor: AppColors.textLight,
+            showUnselectedLabels: true,
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            items: [
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 0
+                    ? Icon(Icons.home)
+                    : Icon(Icons.home_outlined, size: 24),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 1
+                    ? Icon(Icons.search)
+                    : Icon(Icons.search_outlined, size: 24),
+                label: "Search",
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 2
+                    ? Icon(Icons.favorite)
+                    : Icon(Icons.favorite_outlined, size: 24),
+                label: "Favorite",
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 3
+                    ? Icon(Icons.person)
+                    : Icon(Icons.person_outlined, size: 24),
+                label: "Profile",
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -394,7 +456,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.amber, size: 18),
-
                       SizedBox(width: 5),
                       Text(
                         car.rating.toString(),

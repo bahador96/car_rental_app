@@ -355,6 +355,57 @@ class CarDetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "price",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.textLight,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "\$${car.price} / day",
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: AppColors.secondary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.secondary,
+
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        "Book Now",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
